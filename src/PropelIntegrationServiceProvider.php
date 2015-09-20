@@ -30,7 +30,7 @@ class PropelIntegrationServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        if (!$this->app->make('config')->has('propel.propel.general')
+        if (! $this->app->make('config')->has('propel.propel.general')
             && is_file(config_path('propel.php'))
         ) {
             $this->app->make('config')->set('propel', require config_path('propel.php'));
@@ -81,7 +81,7 @@ class PropelIntegrationServiceProvider extends ServiceProvider
     {
         $propel_conf = $this->app->config['propel.propel'];
 
-        if (!isset($propel_conf['runtime']['connections'])) {
+        if (! isset($propel_conf['runtime']['connections'])) {
             throw new \InvalidArgumentException('Unable to guess Propel runtime config file. Please, initialize the "propel.runtime" parameter.');
         }
 
@@ -114,7 +114,7 @@ class PropelIntegrationServiceProvider extends ServiceProvider
             }
         }
 
-        if (!$has_default_logger) {
+        if (! $has_default_logger) {
             $serviceContainer->setLogger('defaultLogger', \Log::getMonolog());
         }
 
@@ -145,14 +145,14 @@ class PropelIntegrationServiceProvider extends ServiceProvider
         if ($query_name) {
             $query = new $query_name();
 
-            if (!$query instanceof Criteria) {
+            if (! $query instanceof Criteria) {
                 throw new InvalidConfigurationException('Configuration directive «auth.user_query» must contain valid classpath of user Query. Excpected type: instanceof Propel\\Runtime\\ActiveQuery\\Criteria');
             }
         } else {
             $user_class = \Config::get('auth.model');
             $query = new $user_class();
 
-            if (!method_exists($query, 'buildCriteria')) {
+            if (! method_exists($query, 'buildCriteria')) {
                 throw new InvalidConfigurationException('Configuration directive «auth.model» must contain valid classpath of model, which has method «buildCriteria()»');
             }
 

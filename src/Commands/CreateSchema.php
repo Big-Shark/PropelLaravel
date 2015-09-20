@@ -51,7 +51,7 @@ class CreateSchema extends Command
         $from = __DIR__.'/../../resources/'.$type.'_schema.xml';
         $to = $config->get('propel.propel.paths.schemaDir').'/'.$config->get('propel.propel.generator.schema.basename').'.xml';
 
-        if (!copy($from, $to)) {
+        if (! copy($from, $to)) {
             throw new \Exception('Failed to copy a file "'.$from.'" to "'.$to.'"');
         }
 

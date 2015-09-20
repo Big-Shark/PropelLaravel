@@ -99,7 +99,7 @@ class PropelUserProvider implements UserProviderInterface
         $user_class = \Config::get('auth.model');
 
         foreach ($credentials as $key => $value) {
-            if (!str_contains($key, 'password')) {
+            if (! str_contains($key, 'password')) {
                 $query->where("{$user_class}.{$key}".' = ?', $value);
             }
         }

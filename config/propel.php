@@ -63,7 +63,7 @@ return [
                         'charset' => 'utf8',
                         #Array of queries to run when the database connection is initialized
                         'query' => [
-                            'SET NAMES utf8 COLLATE utf8_unicode_ci, COLLATION_CONNECTION = utf8_unicode_ci, COLLATION_DATABASE = utf8_unicode_ci, COLLATION_SERVER = utf8_unicode_ci'
+                            'SET NAMES utf8 COLLATE utf8_unicode_ci, COLLATION_CONNECTION = utf8_unicode_ci, COLLATION_DATABASE = utf8_unicode_ci, COLLATION_SERVER = utf8_unicode_ci',
                         ],
                     ],
                     'slaves' => [
